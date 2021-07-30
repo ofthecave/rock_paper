@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    function computerPlay() {
+        let randomNumber = Math.floor(Math.random() * 100);
+        if (randomNumber >= 0 && randomNumber < 33) {
+            return "Rock"
+        } else if (randomNumber >= 33 && randomNumber < 66) {
+            return "Paper"
+        } else {
+            return "Scissors"
+        }
+    }
+    function playRound(computerSelection , playerSelection) {
+        let upperCaseSelection = playerSelection.toUpperCase()
+        if (upperCaseSelection === 'rock'.toUpperCase()) {
+            if (computerSelection === 'Rock'){
+                return 'Tie!'
+            } else if (computerSelection === 'Paper') {
+                return 'You lose! Paper beats rock!'
+            } else if (computerSelection === 'Scissors') {
+                return 'You win! Rock beats scissors!'
+            }
+        } else if (upperCaseSelection === 'paper'.toUpperCase()) {
+            if (computerSelection === 'Rock'){
+                return 'You win! Paper beats rock!'
+            } else if (computerSelection === 'Paper') {
+                return 'Tie!'
+            } else if (computerSelection === 'Scissors') {
+                return 'You lose! Scissors beats rock!'
+            }
+        } else if (upperCaseSelection === 'scissors'.toUpperCase()) {
+            if (computerSelection === 'Rock'){
+                return 'You lose! Rock beats scissors!'
+            } else if (computerSelection === 'Paper') {
+                return 'You win! Scissors beat paper!'
+            } else if (computerSelection === 'Scissors') {
+                return 'Tie!'
+            }
+        }
+    }
+    let win = 0;
+    let lose = 0;
+    function game() {
+            for (let i = 0; i <= 5 ; i++) {
+                const computerSelection = computerPlay() ;
+                const playerSelection = prompt('ayo pick sth') ; 
+                let value = playRound(computerSelection , playerSelection) ; 
+                
+                if (value.slice(4 , 8) === 'lose') {
+                    lose++;
+                }
+                if (value.slice(4 , 7) === 'win') {
+                    win++;
+                }
+                console.log(value)
+            }
+            if (win > lose) {
+                console.log('You win')
+            } else if (lose > win) {
+                console.log('You lose')
+            } else {
+                console.log('Tie!')
+            }
+    }
+    game()
+  </script>
+</body>
+</html>
